@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public class Handler {
 
-	public static boolean renderObject = true, renderAliveObject = true, tickObject = true, tickAliveObject,
+	public static boolean renderObject = true, renderAliveObject = true, tickObject = true, tickAliveObject = true,
 			renderDropObject = true, tickDropObject = true, renderContainerObjects = true, tickContainerObjects = true;
 
 	public ArrayList<GameObject> objects = new ArrayList<GameObject>();
@@ -105,6 +105,15 @@ public class Handler {
 		for (int i = 0; i < objects.size(); i++) {
 			if (objects.get(i).getId() == id) {
 				return objects.get(i);
+			}
+		}
+		return null;
+	}
+	
+	public GameObject getDirectAlive(ID id) {
+		for (int i = 0; i < aliveObjects.size(); i++) {
+			if (aliveObjects.get(i).getId() == id) {
+				return aliveObjects.get(i);
 			}
 		}
 		return null;

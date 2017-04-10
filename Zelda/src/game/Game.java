@@ -11,10 +11,12 @@ public class Game extends Canvas implements Runnable {
 
 	private static final long serialVersionUID = 1456564564L;
 	private static boolean MasterRunning = false;
-	public int weite = 1920, höhe = 1080;
+	public static int weite = 1920, höhe = 1080;
 	public Fenster Window;
 	private Thread thread;
 	public Handler handler;
+	public static float WorldX = 0, WorldY = 0, WorldVelX = 0, WorldVelY = 0;
+	public static Debug debug;
 	
 	public static void main(String[] args) {
 		new Game();
@@ -24,7 +26,7 @@ public class Game extends Canvas implements Runnable {
 	public void run() {
 		this.requestFocus();
 		long letztesMal = System.nanoTime();
-		double anzahlvonTicks = 60.0;
+		double anzahlvonTicks = 1000.0D;
 		double ns = 1000000000 / anzahlvonTicks;
 		double delta = 0;
 		long timer = System.currentTimeMillis();
@@ -69,15 +71,20 @@ public class Game extends Canvas implements Runnable {
 			return;
 		}
 		Graphics g = bs.getDrawGraphics();
-		handler.render(g);
 		g.setColor(Color.black);
 		g.fillRect(0, 0, weite, höhe);
+		handler.render(g);
+		if(Debug.isVisible) {
+			debug.render(g);
+		}
 		g.dispose();
 		bs.show();
 		this.getGraphics();
 	}
 
 	public void tick() {
+		WorldX += WorldVelX;
+		WorldY += WorldVelY;
 		handler.tick();
 	}
 	
@@ -85,6 +92,7 @@ public class Game extends Canvas implements Runnable {
 		Window = new Fenster(this, weite, höhe);
 		handler = new Handler();
 		handler.addAliveObject(new Player(weite / 2, höhe / 2, ID.Player, handler));
+		debug = new Debug(handler);
 		this.addKeyListener(new KeyInput(handler));
 	}
 }
