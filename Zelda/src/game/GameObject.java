@@ -5,15 +5,15 @@ import java.awt.Rectangle;
 
 public abstract class GameObject {
 
-	protected  int x, y;
+	protected  float x, y;
 	protected Rectangle rec;
 	protected float velX, velY;
 	protected ID id;
 	
-	public GameObject(int x,int y,Rectangle rec) {
+	public GameObject(float x,float y,ID id) {
 		this.x = x;
 		this.y = y;
-		this.rec = rec;
+		this.id = id;
 	}
 	
 	public abstract void tick();
@@ -21,7 +21,7 @@ public abstract class GameObject {
 	public abstract Rectangle getBounds();
 	public abstract void removeThis();
 	
-	public int getX() {
+	public float getX() {
 		return x;
 	}
 	
@@ -37,7 +37,7 @@ public abstract class GameObject {
 		this.x = x;
 	}
 
-	public int getY() {
+	public float getY() {
 		return y;
 	}
 
@@ -67,5 +67,13 @@ public abstract class GameObject {
 
 	public void setVelY(float velY) {
 		this.velY = velY;
+	}
+	
+	public int getWidth() {
+		return (int) getBounds().getWidth();
+	}
+	
+	public int getHeight() {
+		return (int) getBounds().getHeight();
 	}
 }

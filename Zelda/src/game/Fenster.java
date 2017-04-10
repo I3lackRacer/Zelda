@@ -16,7 +16,7 @@ public class Fenster extends JFrame{
 		frame.setMaximumSize(new Dimension(weite, höhe));
 		frame.setMinimumSize(new Dimension(weite, höhe));
 		frame.setDefaultCloseOperation(frame.EXIT_ON_CLOSE);
-		frame.setResizable(false);
+		frame.setResizable(false);getContentPane();
 		frame.setLocationRelativeTo(null);
 		frame.add(game);
 		frame.setUndecorated(true);

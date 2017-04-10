@@ -4,12 +4,20 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
 public class KeyInput extends KeyAdapter{
+	
+	public Handler handler;
+	
+	public KeyInput(Handler handler) {
+		this.handler = handler;
+	}
 
 	@Override
 	public void keyPressed(KeyEvent e) {
 		super.keyPressed(e);
 		int key = e.getKeyCode();
-		
+		if(key == KeyEvent.VK_ESCAPE) {
+			System.exit(0);
+		}
 	}
 	
 	@Override

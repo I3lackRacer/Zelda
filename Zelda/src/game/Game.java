@@ -5,6 +5,8 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 
+import AliveObjects.Player;
+
 public class Game extends Canvas implements Runnable {
 
 	private static final long serialVersionUID = 1456564564L;
@@ -12,6 +14,7 @@ public class Game extends Canvas implements Runnable {
 	public int weite = 1920, höhe = 1080;
 	public Fenster Window;
 	private Thread thread;
+	public Handler handler;
 	
 	public static void main(String[] args) {
 		new Game();
@@ -66,6 +69,7 @@ public class Game extends Canvas implements Runnable {
 			return;
 		}
 		Graphics g = bs.getDrawGraphics();
+		handler.render(g);
 		g.setColor(Color.black);
 		g.fillRect(0, 0, weite, höhe);
 		g.dispose();
@@ -74,10 +78,13 @@ public class Game extends Canvas implements Runnable {
 	}
 
 	public void tick() {
-
+		handler.tick();
 	}
 	
 	public Game() {
 		Window = new Fenster(this, weite, höhe);
+		handler = new Handler();
+		handler.addAliveObject(new Player(weite / 2, höhe / 2, ID.Player, handler));
+		this.addKeyListener(new KeyInput(handler));
 	}
 }
