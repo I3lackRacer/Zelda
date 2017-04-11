@@ -40,6 +40,10 @@ public class Game extends Canvas implements Runnable {
 			}
 			if (MasterRunning) {
 				render();
+				Debug.a = 0;
+					Debug.c = 0;
+					Debug.d = 0;
+					Debug.o = 0;
 				frames++;
 				if (System.currentTimeMillis() - timer > 1000) {
 					timer += 1000;

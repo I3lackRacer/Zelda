@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 
+import game.Debug;
 import game.Game;
 import game.GameObject;
 import game.Handler;
@@ -22,7 +23,6 @@ public class Player extends GameObject{
 
 	@Override
 	public void tick() {
-		System.out.println(Game.WorldX + " || " + Game.WorldY);
 		x += velX;
 		y += velY;
 	}
@@ -31,6 +31,7 @@ public class Player extends GameObject{
 	public void render(Graphics g) {
 		float tmpX = x + Game.WorldX, tmpY = y + Game.WorldY;
 		if(!(tmpX > Game.weite || tmpY > Game.höhe || tmpX < -getBounds().getWidth() || tmpY < -getBounds().getHeight())) {
+			Debug.a++;
 			g.setColor(Color.GREEN);
 			g.fillRect( (int)tmpX, (int)tmpY, getWidth(), getWidth());
 		}
