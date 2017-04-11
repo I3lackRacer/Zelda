@@ -95,7 +95,7 @@ public class Game extends Canvas implements Runnable {
 	public Game() {
 		Window = new Fenster(this, weite, höhe);
 		handler = new Handler();
-		handler.addAliveObject(new Player(weite / 2, höhe / 2, ID.Player, handler));
+		handler.addObject(new Player(weite / 2, höhe / 2, ID.Player, handler));
 		debug = new Debug(handler);
 		this.addKeyListener(new KeyInput(handler));
 	}

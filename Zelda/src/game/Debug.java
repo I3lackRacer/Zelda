@@ -26,10 +26,8 @@ public class Debug {
 			int x = Game.weite/100*85 + 7, y = Game.höhe/100*5+15, i = 1;
 			g.drawString("DEBUG INFO", x, y + 20*i++);
 			g.drawString("Welt Koordinaten: " + ((int)Game.WorldX) + " || " + ((int)Game.WorldY), x, y + 20*i++);
-			g.drawString("Lebende Objekte: " + handler.aliveObjects.size() + "(" + a + ")", x, y+20*i++);
-			g.drawString("Container Objekte: " + handler.containerObjects.size() + "(" + c + ")", x, y+20*i++);
 			g.drawString("Objekte: " + handler.objects.size() + "(" + o + ")", x, y+20*i++);
-			g.drawString("Drop Objekte: " + handler.dropObjects.size() + "(" + d + ")", x, y+20*i++);
+			g.drawString("Drop Objekte: " + handler.hitlessObjects.size() + "(" + d + ")", x, y+20*i++);
 			g.drawRect(Game.weite/100*85, Game.höhe/100*5, Game.weite/100*13, ((int)(Game.höhe/100*1.5F)*i+45));
 		}
 	}

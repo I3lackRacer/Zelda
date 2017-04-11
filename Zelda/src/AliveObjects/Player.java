@@ -44,10 +44,6 @@ public class Player extends GameObject{
 
 	@Override
 	public void removeThis() {
-		if(handler.aliveObjects.contains(this)) {
-			handler.removeAliveObject(this);
-		}
-		
 		if(handler.objects.contains(this)) {
 			handler.removeObject(this);
 		}
