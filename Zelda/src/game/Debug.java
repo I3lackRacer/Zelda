@@ -28,6 +28,7 @@ public class Debug {
 			g.drawString("Welt Koordinaten: " + ((int)Game.WorldX) + " || " + ((int)Game.WorldY), x, y + 20*i++);
 			g.drawString("Objekte: " + handler.objects.size() + "(" + o + ")", x, y+20*i++);
 			g.drawString("Drop Objekte: " + handler.hitlessObjects.size() + "(" + d + ")", x, y+20*i++);
+			g.drawString("FPS: " + Game.FPS, x, y+20*i++);
 			g.drawRect(Game.weite/100*85, Game.höhe/100*5, Game.weite/100*13, ((int)(Game.höhe/100*1.5F)*i+45));
 		}
 	}

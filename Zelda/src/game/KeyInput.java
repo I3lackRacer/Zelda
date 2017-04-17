@@ -6,7 +6,7 @@ import java.awt.event.KeyEvent;
 public class KeyInput extends KeyAdapter{
 	
 	public Handler handler;
-	public float speed = 0.5F;
+	public float speed = -0.5F;
 	
 	public boolean[] keydown = {
 			

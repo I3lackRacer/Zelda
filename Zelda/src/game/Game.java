@@ -17,7 +17,8 @@ public class Game extends Canvas implements Runnable {
 	public Handler handler;
 	public static float WorldX = 0, WorldY = 0, WorldVelX = 0, WorldVelY = 0;
 	public static Debug debug;
-	
+	public static int FPS = 0;
+
 	public static void main(String[] args) {
 		new Game();
 	}
@@ -41,12 +42,13 @@ public class Game extends Canvas implements Runnable {
 			if (MasterRunning) {
 				render();
 				Debug.a = 0;
-					Debug.c = 0;
-					Debug.d = 0;
-					Debug.o = 0;
+				Debug.c = 0;
+				Debug.d = 0;
+				Debug.o = 0;
 				frames++;
 				if (System.currentTimeMillis() - timer > 1000) {
 					timer += 1000;
+					FPS = frames;
 					frames = 0;
 				}
 			}
@@ -61,7 +63,7 @@ public class Game extends Canvas implements Runnable {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public synchronized void start() {
 		thread = new Thread(this);
 		thread.start();
@@ -78,7 +80,7 @@ public class Game extends Canvas implements Runnable {
 		g.setColor(Color.black);
 		g.fillRect(0, 0, weite, höhe);
 		handler.render(g);
-		if(Debug.isVisible) {
+		if (Debug.isVisible) {
 			debug.render(g);
 		}
 		g.dispose();
@@ -91,11 +93,12 @@ public class Game extends Canvas implements Runnable {
 		WorldY += WorldVelY;
 		handler.tick();
 	}
-	
+
 	public Game() {
 		Window = new Fenster(this, weite, höhe);
 		handler = new Handler();
-		handler.addObject(new Player(weite / 2, höhe / 2, ID.Player, handler));
+		handler.addObject(new Player(weite / 2 - 50, höhe / 2 - 50, ID.Player, handler, (short) 100));
+		new MapLoader("test1_map.png", handler);
 		debug = new Debug(handler);
 		this.addKeyListener(new KeyInput(handler));
 	}

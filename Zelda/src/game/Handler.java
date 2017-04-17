@@ -39,11 +39,11 @@ public class Handler {
 	public void removeObject(GameObject tmp) {
 		objects.remove(tmp);
 	}
-	
+
 	public void removeHitlessObject(GameObject tmp) {
 		hitlessObjects.remove(tmp);
 	}
-	
+
 	public void addHitlessObject(GameObject tmp) {
 		hitlessObjects.add(tmp);
 	}

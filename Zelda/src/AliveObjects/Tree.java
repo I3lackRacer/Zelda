@@ -10,11 +10,11 @@ import game.GameObject;
 import game.Handler;
 import game.ID;
 
-public class Player extends GameObject{
+public class Tree extends GameObject{
 	
 	public Handler handler;
 
-	public Player(float x, float y, ID id, Handler handler, short priority) {
+	public Tree(float x, float y, ID id, Handler handler, short priority) {
 		super(x, y, id, priority);
 		
 		velX = 0;
@@ -30,11 +30,11 @@ public class Player extends GameObject{
 	@Override
 	public void render(Graphics g) {
 		float tmpX = x + Game.WorldX, tmpY = y + Game.WorldY;
-//		if(!(tmpX > Game.weite || tmpY > Game.höhe || tmpX < -getBounds().getWidth() || tmpY < -getBounds().getHeight())) {
+		if(!(tmpX > Game.weite || tmpY > Game.höhe || tmpX < -getBounds().getWidth() || tmpY < -getBounds().getHeight())) {
 			Debug.a++;
 			g.setColor(Color.GREEN);
-			g.fillRect( (int)x, (int)y, getWidth(), getWidth());
-//		}
+			g.fillRect( (int)tmpX, (int)tmpY, getWidth(), getWidth());
+		}
 	}
 
 	@Override
