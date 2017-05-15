@@ -3,13 +3,14 @@ package game;
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Toolkit;
 import java.awt.image.BufferStrategy;
 
 public class Game extends Canvas implements Runnable {
 
 	private static final long serialVersionUID = 1456564564L;
 	private static boolean MasterRunning = false;
-	public int weite = 1920, höhe = 1080;
+	public int weite = Toolkit.getDefaultToolkit().getScreenSize().width, höhe = Toolkit.getDefaultToolkit().getScreenSize().height;
 	public Fenster Window;
 	private Thread thread;
 	
